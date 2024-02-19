@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1 class="title">Resolva a operação:</h1>
+
+    <div class="container">
+        <div class="quadrado">
+            <span id="num1"></span> / <span id="num2"></span> =
+        </div>
+    </div>
+    
+    <div class="button-container">
+        <button class="button-4" onclick="checkAnswer(this)" id="option1"></button>
+        <button class="button-4" onclick="checkAnswer(this)" id="option2"></button>
+        <button class="button-4" onclick="checkAnswer(this)" id="option3"></button>
+        <button class="button-4" onclick="checkAnswer(this)" id="option4"></button>
+    </div>
+
+    <button id="nextButton" style="display: none;" onclick="nextQuestion()">Próxima Questão</button>
+
+    <script>
+        var num1, num2, correctAnswer, options;
+
+        function generateQuestion() {
+            num2 = Math.floor(Math.random() * 10) + 1; // Número aleatório de 1 a 10
+            num1 = Math.floor(Math.random() * 10 + 1) * num2; // Número aleatório divisível por num2 e maior que num2
+            correctAnswer = num1 / num2;
+
+            document.getElementById("num1").textContent = num1;
+            document.getElementById("num2").textContent = num2;
+
+            // Coloca números aleatórios nos botões
+            options = [correctAnswer];
+            for (var i = 1; i <= 3; i++) {
+                var randomNumber = Math.floor(Math.random() * 20); // Número aleatório de 0 a 19
+                while (options.includes(randomNumber)) {
+                    randomNumber = Math.floor(Math.random() * 20);
+                }
+                options.push(randomNumber);
+            }
+            options.sort(function() {
+                return Math.random() - 0.5;
+            });
+            for (var j = 0; j < options.length; j++) {
+                document.getElementById("option" + (j + 1)).textContent = options[j];
+            }
+        }
+
+        function checkAnswer(button) {
+            var selectedAnswer = parseFloat(button.textContent); // Converte o texto do botão para número
+
+            if (selectedAnswer === correctAnswer) {
+                button.style.backgroundColor = "green";
+            } else {
+                button.style.backgroundColor = "red";
+                document.getElementById("option1").style.backgroundColor = "red";
+                document.getElementById("option2").style.backgroundColor = "red";
+                document.getElementById("option3").style.backgroundColor = "red";
+                document.getElementById("option4").style.backgroundColor = "red";
+                document.getElementById("option" + (options.indexOf(correctAnswer) + 1)).style.backgroundColor = "green";
+            }
+
+            var buttons = document.querySelectorAll(".button-4");
+            for (var i = 0; i < buttons.length; i++) {
+                buttons[i].disabled = true; // Desativa todos os botões após uma resposta ser selecionada
+            }
+
+            document.getElementById("nextButton").style.display = "block";
+        }
+
+        function nextQuestion() {
+            location.reload(); // Atualiza a página para gerar uma nova pergunta
+        }
+
+        // Gerar a primeira pergunta quando a página carrega
+        window.onload = generateQuestion;
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+/* gradiente */
+body {
+    background: linear-gradient(to bottom, #da4697, #ec96bf);
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    color: #333; 
+}
+
+.container {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Centralize horizontalmente */
+    height: 30vh; /* Altura igual à altura da janela de visualização */
+}
+
+.quadrado {
+    width: 200px; /* Largura do quadrado */
+    height: 100px; /* Altura do quadrado */
+    background-color: white; /* Cor de fundo */
+    border: 2px solid black; /* Borda */
+    text-align: center; /* Centraliza o texto horizontalmente */
+    line-height: 100px; /* Centraliza o texto verticalmente */
+    font-size: 24px; /* Tamanho da fonte */
+    font-family: 'Fredoka', sans-serif; /* Adiciona a fonte Fredoka */
+}
+
+
+/* Título */
+.title {
+    font-family: 'Fredoka', sans-serif;
+    text-align: center; /* Centraliza o título */
+    margin-top: 50px; /* Ajusta o espaçamento superior conforme necessário */
+}
+
+/* Botões */
+.button-container {
+    display: flex; /* Usa flexbox para alinhar os botões */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    margin-top: 30px; /* Adiciona uma margem superior entre o título e os botões */
+}
+
+.button-4 {
+    appearance: none;
+    background-color: #FAFBFC;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+    box-sizing: border-box;
+    color: #24292E;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Fredoka', sans-serif; /* Aplica a fonte Fredoka */
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 20px;
+    list-style: none;
+    padding: 6px 16px;
+    transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    white-space: nowrap;
+    margin: 5px; /* Adiciona margem entre os botões */
+}
+
+.button-4:hover {
+    background-color: #F3F4F6;
+    text-decoration: none;
+    transition-duration: 0.1s;
+}
+
+.button-4:disabled {
+    background-color: #FAFBFC;
+    border-color: rgba(27, 31, 35, 0.15);
+    color: #959DA5;
+    cursor: default;
+}
+
+.button-4:active {
+    background-color: #EDEFF2;
+    box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+    transition: none 0s;
+}
+
+.button-4:focus {
+    outline: 1px transparent;
+}
+
+.button-4:before {
+    display: none;
+}
+
+.button-4:-webkit-details-marker {
+    display: none;
+}
